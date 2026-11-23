@@ -2,6 +2,31 @@
 
 机械革命 Code01 Ver 2.0 的 OpenCore 配置，来自 1401 U 盘的默认 EFI。实机使用 Ryzen 7 6800H、Radeon 680M、macOS Tahoe 26.7.2 和 MacPro7,1 机型。
 
+## 已完善（原机实测可用）
+
+以下结果来自 Code01 上的 1401 原盘 EFI。公开副本仍需补齐文件和机器身份，见下方使用说明。
+
+| 功能 | 实测结果 |
+|---|---|
+| 系统启动 | 使用 `MacPro7,1` 从 1401 成功进入 macOS Tahoe 26.7.2 桌面。多次启动的稳定性见下表。 |
+| Radeon 680M 内屏与 Metal | RembrandtGfx 驱动内屏以 2560×1600、120 Hz 显示，Metal API 报告支持 Metal 3。 |
+| CPU 温度与频率 | AMDRyzenCPUPowerManagement 与 SMCAMDProcessor 3.34.0 能读到随负载变化的 CPU 封装温度和核心有效频率。 |
+| 电池状态 | macOS 能读取电量百分比和充电状态。 |
+| USB 有线网络 | USB 千兆网卡已取得 IPv4 地址，系统通过该网卡连接默认网关。 |
+
+## 未完善（已知问题与待验证项）
+
+| 功能 | 当前状态 |
+|---|---|
+| 启动稳定性与机型 | 部分启动的最后一条可见日志为 `EXITBS:START`，停住的具体位置仍未确定。切换到 `MacBookPro16,1` 后还出现过已进入内核、内屏却一直黑屏的情况。 |
+| 桌面动画 | 三指上划和 Control＋↑ 打开调度中心时均观察到轻微掉帧，亮屏闲置较久后更明显。尚无逐帧测量结果。 |
+| 视频硬解 | VideoToolbox 对 H.264 和 HEVC 的硬件解码能力查询均返回 `false`。 |
+| 触控板 | 正常启动时可用三指手势。个别启动中 OpenCore 记录了 VoodooInput 注入，但系统未建立虚拟触控板服务，触控板不可用。 |
+| 内置摄像头 | Windows 下画面正常。Tahoe 下能打开视频流，采集到的帧仍为黑色。640×480 模式切换问题尚未解决。 |
+| 双风扇转速 | 尚未确认 `GETC(1)` 两路读数与两只风扇实际 RPM 的对应关系。 |
+| Wi-Fi、蓝牙与 AirDrop | 1401 已配置 MediaTek 驱动。本次网络核对使用 USB 网卡，Wi-Fi 连接仍需单独验证。此前出现过蓝牙启动超时，AirDrop 文件传输也待验证。 |
+| 其他硬件 | 板载以太网仍需接线测试。系统能列出音频输入、输出设备，扬声器播放和内置麦克风录音仍需单独验证。 |
+
 ## 使用范围
 
 公开版包含 OpenCore 1.0.9 DEBUG 启动文件、5 张 ACPI 表、2 个 UEFI 驱动、UEFI 工具和 19 个顶层 kext。文件直接取自 1401 当前默认 EFI。RestrictEvents 随盘保留，配置中已停用。
@@ -11,11 +36,5 @@
 3. 原机为内屏注入了本机 VBIOS。请核实自己的硬件，再将本机 VBIOS 填回 GPU 设备属性的 `ATY,bin_image`。公开版已清除本机蓝牙身份数据。
 
 [SHA256SUMS](SHA256SUMS) 校验仓库中全部 EFI 文件。[原盘依赖清单](DEPENDENCIES.md) 可核对另行下载的文件。公开版未单独上机启动测试。
-
-## 本机测试记录
-
-- RembrandtGfx 驱动内屏达到 2560×1600、120 Hz，Metal API 报告支持 Metal 3。VideoToolbox 对 H.264 和 HEVC 硬解的查询返回 false。
-- AMDRyzenCPUPowerManagement 与 SMCAMDProcessor 3.34.0 可读取动态封装温度和核心有效频率。
-- MacBookPro16,1 下曾出现内屏黑屏。USB 摄像头在 Tahoe 能开流，但测试画面全黑。双风扇 RPM 仍待验证。
 
 [OpenCore](https://github.com/acidanthera/OpenCorePkg) · [CPU 温度驱动 v3.34.0](https://github.com/DrogaBox/SMCAMDProcessor-personal/releases/tag/v3.34.0)
