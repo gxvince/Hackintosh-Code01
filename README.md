@@ -4,9 +4,13 @@
 
 ## 使用范围
 
-本仓库提供 [config.plist](EFI/OC/config.plist) 与[驱动、ACPI 和 UEFI 文件清单](DEPENDENCIES.md)。复现时需另行准备清单中的文件、匹配的 OpenCore 和启动文件，并为自己的机器生成 SystemSerialNumber、MLB、SystemUUID 和 ROM。
+公开版包含 OpenCore 1.0.9 DEBUG 启动文件、5 张 ACPI 表、2 个 UEFI 驱动、UEFI 工具和 19 个顶层 kext。文件直接取自 1401 当前默认 EFI。RestrictEvents 随盘保留，配置中已停用。
 
-原配置向 GPU 注入了本机 VBIOS。公开配置已移除 ATY,bin_image，复现时需从自己的同型号机器核实并补回。蓝牙控制器身份数据已清空。公开模板未经单独启动测试。
+1. 按[下载清单](DOWNLOADS.md)补齐 6 个启用的 kext。RembrandtGfx 提供源码和构建说明，尚未找到与原机一致的显卡驱动下载。
+2. 在 [config.plist](EFI/OC/config.plist) 中为自己的 MacPro7,1 身份填写 SystemSerialNumber、MLB、SystemUUID 和 ROM。
+3. 原机为内屏注入了本机 VBIOS。请核实自己的硬件，再将本机 VBIOS 填回 GPU 设备属性的 `ATY,bin_image`。公开版已清除本机蓝牙身份数据。
+
+[SHA256SUMS](SHA256SUMS) 校验仓库中全部 EFI 文件。[原盘依赖清单](DEPENDENCIES.md) 可核对另行下载的文件。公开版未单独上机启动测试。
 
 ## 本机测试记录
 
