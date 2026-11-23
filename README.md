@@ -1,6 +1,6 @@
 # Hackintosh-Code01
 
-机械革命 Code01 Ver 2.0 的 OpenCore 配置，来自 1401 U 盘的默认 EFI。实机使用 Ryzen 7 6800H、Radeon 680M、macOS Tahoe 26.7.2 和 MacPro7,1 机型。
+机械革命 Code01 Ver 2.0 的 OpenCore 配置，基于 1401 的默认 EFI。 Ryzen 7 6800H、Radeon 680M、macOS Tahoe 26.7.2 
 
 ## 已完善
 
