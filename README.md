@@ -1,10 +1,10 @@
 # Hackintosh-Code01
 
-机械革命 Code01 Ver 2.0 的 OpenCore 配置，基于 1401 的默认 EFI。 Ryzen 7 6800H、Radeon 680M、macOS Tahoe 26.7.2 
+机械革命 Code01 Ver 2.0 的 OpenCore 配置，同步自内置硬盘的 EFI。机型为 `MacBookPro16,2`，硬件为 AMD Ryzen 7 6800H 和 AMD Radeon 680M，系统为 macOS Tahoe 26.7.2。
 
 ## 已完善
 
-以下结果来自 Code01 上的 1401 原盘 EFI。公开副本仍需补齐文件和机器身份，见下方使用说明。
+本机已用内置硬盘的 `MacBookPro16,2` 配置启动，内屏正常。下表中的其余功能沿用此前在 1401 上的实测记录。公开副本仍需补齐文件和机器身份，见下方使用说明。
 
 | 功能 | 实测 |
 |---|---|
@@ -23,10 +23,10 @@
 
 ## 使用范围
 
-公开版包含 OpenCore 1.0.9 DEBUG 启动文件、5 张 ACPI 表、2 个 UEFI 驱动、UEFI 工具和 19 个顶层 kext。文件直接取自 1401 当前默认 EFI。RestrictEvents 随盘保留，配置中已停用。
+公开版包含 OpenCore 1.0.9 DEBUG 启动文件、5 张 ACPI 表、2 个 UEFI 驱动、UEFI 工具和 19 个顶层 kext。已核对硬盘上的原件。RestrictEvents 在 Lilu 之后加载，CPU 显示名称设为 `AMD Ryzen 7 6800H`，显卡的 `model` 设为 `AMD Radeon 680M`。这两项名称设置已回读，仍待重启验证界面显示。
 
 1. 按[下载清单](DOWNLOADS.md)补齐 6 个启用的 kext。RembrandtGfx 提供源码和构建说明，尚未找到与原机一致的显卡驱动下载。
-2. 在 [config.plist](EFI/OC/config.plist) 中为自己的 MacPro7,1 身份填写 SystemSerialNumber、MLB、SystemUUID 和 ROM。
+2. 在 [config.plist](EFI/OC/config.plist) 中为自己的 MacBookPro16,2 身份填写 SystemSerialNumber、MLB、SystemUUID 和 ROM。
 3. 原机为内屏注入了本机 VBIOS。请核实自己的硬件，再将本机 VBIOS 填回 GPU 设备属性的 `ATY,bin_image`。公开版已清除本机蓝牙身份数据。
 
 [SHA256SUMS](SHA256SUMS) 校验仓库中全部 EFI 文件。[原盘依赖清单](DEPENDENCIES.md) 可核对另行下载的文件。公开版未单独上机启动测试。

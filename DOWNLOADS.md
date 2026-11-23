@@ -2,20 +2,20 @@
 
 ## 需要补齐的 6 个 kext
 
-以下目录放入 `EFI/OC/Kexts/`。1401 的配置已启用这些条目。保留原文件名和包内目录；原机文件的 SHA-256 见 [依赖清单](DEPENDENCIES.md)。
+以下目录放入 `EFI/OC/Kexts/`。硬盘配置已启用这些条目。保留原文件名和包内目录；原机文件的 SHA-256 见 [依赖清单](DEPENDENCIES.md)。
 
 | 驱动 | 下载或构建入口 | 版本与限制 |
 |---|---|---|
-| AMFIPass.kext 1.4.1 | [上游](https://raw.githubusercontent.com/dortania/OpenCore-Legacy-Patcher/HEAD/payloads/Kexts/Acidanthera/AMFIPass-v1.4.1-RELEASE.zip) | OCLP 提供的 1.4.1 发布包。主程序与 1401 相同。未核实可再分发此二进制的授权。 |
-| AppleMCEReporterDisabler.kext 1.2 | [上游](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip) | Info.plist 与 1401 相同。仅含匹配配置，作者保留版权。 |
-| ECEnabler.kext 1.0.6 | [下载 ZIP](https://github.com/dortania/build-repo/releases/download/ECEnabler-29dcde7/ECEnabler-1.0.6-RELEASE.zip) | 包内主程序与 1401 相同。未找到明确的再分发许可。 |
+| AMFIPass.kext 1.4.1 | [上游](https://raw.githubusercontent.com/dortania/OpenCore-Legacy-Patcher/HEAD/payloads/Kexts/Acidanthera/AMFIPass-v1.4.1-RELEASE.zip) | OCLP 提供的 1.4.1 发布包。主程序与硬盘原件相同。未核实可再分发此二进制的授权。 |
+| AppleMCEReporterDisabler.kext 1.2 | [上游](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip) | Info.plist 与硬盘原件相同。仅含匹配配置，作者保留版权。 |
+| ECEnabler.kext 1.0.6 | [下载 ZIP](https://github.com/dortania/build-repo/releases/download/ECEnabler-29dcde7/ECEnabler-1.0.6-RELEASE.zip) | 包内主程序与硬盘原件相同。未找到明确的再分发许可。 |
 | RembrandtGfx.kext 0.1.0 | [上游](https://github.com/wzh4869/Radeon-680M-Hackintosh/blob/HEAD/docs/build.zh-CN.md) · [源码 ZIP](https://github.com/wzh4869/Radeon-680M-Hackintosh/archive/HEAD.zip) | 本机二进制的精确源码和分发条件未核实。链接是候选 23 的构建说明。需自备对应 Tahoe 系统文件和固件，本机版本没有已验证的同哈希下载。 |
-| SimpleHDA.kext 1.0.1 | [下载 ZIP](https://github.com/laobamac/SimpleHDA/releases/download/v1.0.1/SimpleHDA-Tahoe-v1.0.1-DEBUG.zip) | 包内主程序与 1401 相同。上游说明驱动封装了 Apple 专有组件。 |
-| USBToolBox.kext 1.2.0 | [下载 ZIP](https://github.com/USBToolBox/kext/releases/download/1.2.0/USBToolBox-1.2.0-RELEASE.zip) | 发行包主程序与 1401 相同。使用包内的 USBToolBox.kext，配合本仓库的 UTBMap.kext。未找到明确的再分发许可。 |
+| SimpleHDA.kext 1.0.1 | [下载 ZIP](https://github.com/laobamac/SimpleHDA/releases/download/v1.0.1/SimpleHDA-Tahoe-v1.0.1-DEBUG.zip) | 包内主程序与硬盘原件相同。上游说明驱动封装了 Apple 专有组件。 |
+| USBToolBox.kext 1.2.0 | [下载 ZIP](https://github.com/USBToolBox/kext/releases/download/1.2.0/USBToolBox-1.2.0-RELEASE.zip) | 发行包主程序与硬盘原件相同。使用包内的 USBToolBox.kext，配合本仓库的 UTBMap.kext。未找到明确的再分发许可。 |
 
 ## 已随 EFI 提供
 
-启动文件来自 1401。OpenCore.efi 与 [1.0.9 DEBUG 的构建包](https://github.com/dortania/build-repo/releases/download/OpenCorePkg-ebea824/OpenCore-1.0.9-DEBUG.zip) 字节相同。[OpenCore 源码](https://github.com/acidanthera/OpenCorePkg/tree/ebea824880706ac9faa8ee45604245de62be658b)。OpenHfsPlus、OpenRuntime 和两个 UEFI 工具保留 U 盘原件。Tools 中的 Save UEFI Memory Map 为手动诊断入口，运行后会在找到脚本的分区写入内存图。
+启动文件取自内置硬盘 EFI。OpenCore.efi 与 [1.0.9 DEBUG 的构建包](https://github.com/dortania/build-repo/releases/download/OpenCorePkg-ebea824/OpenCore-1.0.9-DEBUG.zip) 字节相同。[OpenCore 源码](https://github.com/acidanthera/OpenCorePkg/tree/ebea824880706ac9faa8ee45604245de62be658b)。OpenHfsPlus、OpenRuntime 和两个 UEFI 工具保留硬盘 EFI 原件。Tools 中的 Save UEFI Memory Map 为手动诊断入口，运行后会在找到脚本的分区写入内存图。
 
 | kext | 源码或制作来源 | 配置状态 |
 |---|---|---|
@@ -27,7 +27,7 @@
 | Lilu.kext | [项目源码](https://github.com/acidanthera/Lilu) | 启用 |
 | NVMeFix.kext | [项目源码](https://github.com/acidanthera/NVMeFix) | 启用 |
 | RTL812xLucy.kext | [项目源码](https://github.com/Mieze/RTL812xLucy/tree/v1.1.3) | 启用 |
-| RestrictEvents.kext | [项目源码](https://github.com/acidanthera/RestrictEvents) | 停用 |
+| RestrictEvents.kext | [项目源码](https://github.com/acidanthera/RestrictEvents) | 启用 |
 | SMCAMDProcessor.kext | [项目源码](https://github.com/DrogaBox/SMCAMDProcessor-personal/tree/v3.34.0) | 启用 |
 | SMCBatteryManager.kext | [项目源码](https://github.com/acidanthera/VirtualSMC) | 启用 |
 | SimpleMtkBtFw.kext | [项目源码](https://github.com/laobamac/SimpleMtkBtFw/tree/1.0.0) | 启用 |

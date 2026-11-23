@@ -1,10 +1,11 @@
-# 1401 启用的依赖
+# 内置硬盘 EFI 启用的依赖
 
-哈希取自 U 盘上的实际文件。驱动有可执行文件时校验该文件，否则校验 Info.plist。
+哈希取自内置硬盘 EFI 上的实际文件。驱动有可执行文件时校验该文件，否则校验 Info.plist。
 
 | 文件 | 版本 | SHA-256 |
 |---|---|---|
 | Kexts/Lilu.kext | 1.7.3 | 6bc64e6d9e1b4dd1f7c6477365d0b7f14734aa00be76321205e1e7a105d4340b |
+| Kexts/RestrictEvents.kext | 1.1.6 | 16979236f272c0500913882e5347e38d5bad1841ea619fe5a0311e9f768aea4e |
 | Kexts/DebugEnhancer.kext | 1.1.1 | 22ee3825ec574833f53cd673326b826c0ceec7d4ae74a48892b6512dd58f1f21 |
 | Kexts/RembrandtGfx.kext | 0.1.0 | c19addede6ac00b365c998feb315bb4fe0459796583b2bc97eba7577c4c35d0e |
 | Kexts/VirtualSMC.kext | 1.3.9 | bf91e9542b86c20acaf210353a93742291c49328e2d14b03fa0fa4fc52b3b5ce |
